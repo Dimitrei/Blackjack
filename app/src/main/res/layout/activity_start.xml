@@ -10,8 +10,24 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.martinnazi.blackjack.StartActivity">
 
-    <TextView
+    <Button
+        android:text="About"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:id="@+id/developebutton"
+        android:textSize="30sp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/gameButton"
+        android:layout_alignEnd="@+id/gameButton"
+        android:layout_marginBottom="192dp" />
+
+    <Button
+        android:text="Start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/gameButton"
+        android:textSize="30sp"
+        android:layout_marginBottom="24dp"
+        android:layout_above="@+id/developebutton"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
