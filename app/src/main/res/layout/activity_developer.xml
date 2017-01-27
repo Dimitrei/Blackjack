@@ -32,7 +32,7 @@
         android:layout_marginTop="20dp"
         android:id="@+id/developer1View"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-        android:layout_below="@+id/titleView"
+        android:layout_below="@+id/title"
         android:layout_centerHorizontal="true"
         android:textAlignment="center" />
 
@@ -40,7 +40,7 @@
         android:text="@string/developers_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/titleView"
+        android:id="@+id/title"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         android:layout_marginTop="50dp"
         android:textSize="36sp"

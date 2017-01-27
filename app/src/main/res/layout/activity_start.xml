@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_start"
     android:layout_width="match_parent"
@@ -8,36 +9,74 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.martinnazi.blackjack.StartActivity">
+    tools:context="com.martinnazi.blackjack.StartActivity"
+    android:orientation="vertical"
+    android:weightSum="1">
 
-    <TextView
-        android:text="BlackJack"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
-        android:id="@+id/titleView"
-        android:textAlignment="center"
-        android:textSize="30sp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_weight="0.36">
+
+        <ImageView
+            app:srcCompat="@drawable/spades_a"
+            android:id="@+id/aceCard"
+            android:layout_height="180dp"
+            android:layout_width="119dp"
+            android:layout_marginLeft="71dp"
+            android:layout_marginStart="71dp"
+            android:layout_below="@+id/title"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="48dp"
+            android:rotation="-20" />
+
+        <ImageView
+            android:layout_width="119dp"
+            android:layout_height="180dp"
+            app:srcCompat="@drawable/spades_k"
+            android:id="@+id/kingCard"
+            android:layout_marginLeft="71dp"
+            android:layout_marginStart="71dp"
+            android:rotation="20"
+            android:layout_alignTop="@+id/aceCard"
+            android:layout_alignLeft="@+id/aceCard"
+            android:layout_alignStart="@+id/aceCard" />
+
+        <TextView
+            android:text="@string/app_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="31dp"
+            android:id="@+id/title"
+            android:textAlignment="center"
+            android:textSize="36sp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+    </RelativeLayout>
 
     <Button
         android:text="Start"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/gameButton"
         android:textSize="30sp"
-        android:layout_marginTop="145dp"
         android:textIsSelectable="false"
-        android:layout_below="@+id/titleView"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerVertical="true"
+        android:layout_alignRight="@+id/developerbutton"
+        android:layout_alignEnd="@+id/developerbutton"
+        android:layout_marginTop="40dp" />
 
     <Button
         android:text="About"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/developebutton"
+        android:id="@+id/developerbutton"
         android:textSize="30sp"
-        android:layout_below="@+id/gameButton"
-        android:layout_centerHorizontal="true" />
-</RelativeLayout>
+        android:layout_alignTop="@+id/gameButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="43dp" />
+
+</LinearLayout>
