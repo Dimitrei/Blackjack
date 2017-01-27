@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Blackjack</string>
+    <string name="copyright_information">Copyright of Nathaniel Martin and Dimitrei Nazi ©\nAssignment 1</string>
+    <string name="developer_name1">Dimitrei Nazi</string>
+    <string name="developer_name0">Nathaniel Martin</string>
+    <string name="developers_title">Developers</string>
 </resources>
