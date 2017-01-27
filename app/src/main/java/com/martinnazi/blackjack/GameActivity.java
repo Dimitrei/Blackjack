@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 
 /**
- * Created by Dimitrei on 1/25/2017.
+ * Main Activity for the game
  */
 public class GameActivity extends Activity {
     @Override
