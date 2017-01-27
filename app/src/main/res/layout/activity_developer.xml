@@ -36,11 +36,13 @@
         android:layout_centerHorizontal="true" />
 
     <TextView
-        android:text="Copyright of Nathaniel and Dimitrei's Assignment 1"
-        android:layout_width="wrap_content"
+        android:text="Copyright of Nathaniel Martin and Dimitrei Nazi &#169;
+        Assignment 1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="49dp"
-        android:id="@+id/assignmentView" />
+        android:id="@+id/assignmentView"
+        android:textAlignment="center" />
 </RelativeLayout>
