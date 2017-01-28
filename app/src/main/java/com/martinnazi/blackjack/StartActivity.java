@@ -14,7 +14,7 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_start);
 
         Button start = (Button) findViewById(R.id.gameButton);
-        Button about = (Button) findViewById(R.id.developebutton);
+        Button about = (Button) findViewById(R.id.developerbutton);
 
         start.setOnClickListener(this);
         about.setOnClickListener(this);
@@ -27,7 +27,7 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
                 Intent gIntent = new Intent(getApplicationContext(), GameActivity.class);
                 startActivity(gIntent);
                 break;
-            case R.id.developebutton:
+            case R.id.developerbutton:
                 Intent dIntent = new Intent(getApplicationContext(), DeveloperActivity.class);
                 startActivity(dIntent);
                 break;
