@@ -2,4 +2,216 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="75dp">
+
+            <TextView
+                android:text="Dealer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:layout_marginStart="35dp"
+                android:id="@+id/dealerView"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:textSize="30sp" />
+
+            <TextView
+                android:text="0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="88dp"
+                android:layout_marginEnd="88dp"
+                android:id="@+id/dCardAmountView"
+                android:textSize="30sp"
+                android:layout_centerVertical="true"
+                android:layout_alignBaseline="@+id/dealerView"
+                android:layout_alignBottom="@+id/dealerView"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="75dp">
+
+            <TextView
+                android:text="Player 1 "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:layout_marginStart="35dp"
+                android:id="@+id/playerView"
+                android:textSize="30sp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:text="0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="88dp"
+                android:layout_marginEnd="88dp"
+                android:id="@+id/pCardAmountView"
+                android:textSize="30sp"
+                android:layout_centerVertical="true"
+                android:layout_alignBaseline="@+id/playerView"
+                android:layout_alignBottom="@+id/playerView"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:text="$200"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_200"
+                android:layout_alignBottom="@+id/button_100"
+                android:layout_toRightOf="@+id/button_100"
+                android:layout_toEndOf="@+id/button_100"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp" />
+
+            <Button
+                android:text="$50"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_50"
+                android:layout_above="@+id/button_200"
+                android:layout_alignLeft="@+id/button_200"
+                android:layout_alignStart="@+id/button_200" />
+
+            <Button
+                android:text="$100"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="18dp"
+                android:id="@+id/button_100"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp" />
+
+            <Button
+                android:text="$25"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_25"
+                android:layout_above="@+id/button_100"
+                android:layout_alignLeft="@+id/button_100"
+                android:layout_alignStart="@+id/button_100" />
+
+            <Button
+                android:text="Stand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="17dp"
+                android:layout_marginEnd="17dp"
+                android:id="@+id/stand_button"
+                android:layout_alignBaseline="@+id/button_50"
+                android:layout_alignBottom="@+id/button_50"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+            <Button
+                android:text="Hit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/hit_button"
+                android:layout_alignBaseline="@+id/button_200"
+                android:layout_alignBottom="@+id/button_200"
+                android:layout_alignLeft="@+id/stand_button"
+                android:layout_alignStart="@+id/stand_button"
+                android:layout_alignRight="@+id/stand_button"
+                android:layout_alignEnd="@+id/stand_button" />
+
+            <TextView
+                android:text="$0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="121dp"
+                android:id="@+id/betView"
+                android:layout_alignLeft="@+id/button_25"
+                android:layout_alignStart="@+id/button_25"
+                android:layout_alignRight="@+id/button_25"
+                android:layout_alignEnd="@+id/button_25"
+                android:textAlignment="center" />
+
+            <TextView
+                android:text="$1000"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/amountTextView"
+                android:layout_alignTop="@+id/betView"
+                android:layout_alignLeft="@+id/button_50"
+                android:layout_alignStart="@+id/button_50"
+                android:textAlignment="center"
+                android:layout_alignRight="@+id/button_50"
+                android:layout_alignEnd="@+id/button_50" />
+
+            <TextView
+                android:text="Bet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="23dp"
+                android:layout_marginStart="23dp"
+                android:layout_marginBottom="145dp"
+                android:id="@+id/betTextView"
+                android:layout_alignRight="@+id/betView"
+                android:layout_alignEnd="@+id/betView"
+                android:textAlignment="center"
+                android:textSize="18sp" />
+
+            <TextView
+                android:text="Amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/amountView"
+                android:layout_alignBaseline="@+id/betTextView"
+                android:layout_alignBottom="@+id/betTextView"
+                android:layout_alignLeft="@+id/amountTextView"
+                android:layout_alignStart="@+id/amountTextView"
+                android:layout_alignRight="@+id/amountTextView"
+                android:layout_alignEnd="@+id/amountTextView"
+                android:textAlignment="center"
+                android:textSize="18sp" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
 </RelativeLayout>
