@@ -7,6 +7,9 @@ import android.os.Bundle;
  * Main Activity for the game
  */
 public class GameActivity extends Activity {
+
+    public enum PlayerType { Dealer, Player; }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
