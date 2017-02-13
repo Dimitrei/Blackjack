@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <LinearLayout
@@ -47,10 +48,22 @@
             android:layout_width="match_parent"
             android:layout_height="100dp">
 
-            <ListView
+            <HorizontalScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scrollbars="horizontal" />
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:id="@+id/dealerCards"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp" >
+
+                </LinearLayout>
+            </HorizontalScrollView>
 
         </RelativeLayout>
 
@@ -90,9 +103,16 @@
             android:layout_width="match_parent"
             android:layout_height="100dp">
 
-            <ListView
+            <HorizontalScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:id="@+id/playerCards" />
+            </HorizontalScrollView>
         </RelativeLayout>
 
         <RelativeLayout
@@ -181,7 +201,7 @@
                 android:text="$1000"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/amountTextView"
+                android:id="@+id/bankTextView"
                 android:layout_alignTop="@+id/betView"
                 android:layout_alignLeft="@+id/button_50"
                 android:layout_alignStart="@+id/button_50"
@@ -206,18 +226,27 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:text="Amount"
+                android:text="Bank"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/amountView"
+                android:id="@+id/bankView"
                 android:layout_alignBaseline="@+id/betTextView"
                 android:layout_alignBottom="@+id/betTextView"
-                android:layout_alignLeft="@+id/amountTextView"
-                android:layout_alignStart="@+id/amountTextView"
-                android:layout_alignRight="@+id/amountTextView"
-                android:layout_alignEnd="@+id/amountTextView"
+                android:layout_alignLeft="@+id/bankTextView"
+                android:layout_alignStart="@+id/bankTextView"
+                android:layout_alignRight="@+id/bankTextView"
+                android:layout_alignEnd="@+id/bankTextView"
                 android:textAlignment="center"
                 android:textSize="18sp" />
+
+            <Button
+                android:text="Reset"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/stand_button"
+                android:layout_alignRight="@+id/stand_button"
+                android:layout_alignEnd="@+id/stand_button"
+                android:id="@+id/resetbet_button" />
 
         </RelativeLayout>
 
