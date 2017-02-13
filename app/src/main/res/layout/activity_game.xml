@@ -28,20 +28,6 @@
                 android:layout_alignParentStart="true"
                 android:textSize="30sp" />
 
-            <TextView
-                android:text="0"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="88dp"
-                android:layout_marginEnd="88dp"
-                android:id="@+id/dCardAmountView"
-                android:textSize="30sp"
-                android:layout_centerVertical="true"
-                android:layout_alignBaseline="@+id/dealerView"
-                android:layout_alignBottom="@+id/dealerView"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
-
         </RelativeLayout>
 
         <RelativeLayout
@@ -50,7 +36,10 @@
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -72,7 +61,7 @@
             android:layout_height="75dp">
 
             <TextView
-                android:text="Player 1 "
+                android:text="Player"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="35dp"
@@ -82,20 +71,6 @@
                 android:layout_centerVertical="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true" />
-
-            <TextView
-                android:text="0"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="88dp"
-                android:layout_marginEnd="88dp"
-                android:id="@+id/pCardAmountView"
-                android:textSize="30sp"
-                android:layout_centerVertical="true"
-                android:layout_alignBaseline="@+id/playerView"
-                android:layout_alignBottom="@+id/playerView"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
 
         </RelativeLayout>
 
@@ -110,8 +85,12 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:id="@+id/playerCards" />
+                    android:orientation="horizontal"
+                    android:id="@+id/playerCards"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingTop="5dp" />
             </HorizontalScrollView>
         </RelativeLayout>
 

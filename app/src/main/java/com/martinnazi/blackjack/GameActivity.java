@@ -1,57 +1,82 @@
 package com.martinnazi.blackjack;
 
 import android.app.Activity;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 
-import java.util.Date;
-import java.util.Random;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
 
 /**
  * Main Activity for the game
  */
 public class GameActivity extends Activity implements View.OnClickListener {
 
-    public enum PlayerType {Dealer, Player;}
+    public enum PlayerTurn {Dealer, Player;}
 
+    public enum GameState {Bet, Play, Finish;}
+
+    private PlayerTurn player;
     private LinearLayout dealerCards;
+    private LinearLayout playerCards;
     private TextView bankTextView;
     private TextView betTextView;
+    private Button button25, button50, button100, button200;
+
     private long bank;
+
+    ArrayList<Drawable> fullDeckList;
+    ArrayList<Drawable> playerHand;
+    ArrayList<Drawable> dealerHand;
+    ArrayList<Drawable> currentDeck;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+        getFullDeck();
+
 
         if (savedInstanceState == null) {
             dealerCards = (LinearLayout) findViewById(R.id.dealerCards);
+            playerCards = (LinearLayout) findViewById(R.id.playerCards);
             bankTextView = (TextView) findViewById(R.id.bankTextView);
             betTextView = (TextView) findViewById(R.id.betTextView);
+            button25 = (Button) findViewById(R.id.button_25);
 
 
-            //Generates Random number between 250 and 1000 for initial bet
-            long initial_bank = Math.round((Math.random() * (1000 - 250) + 250) / 10) * 10;
-            bank = initial_bank;
-            bankTextView.setText("$" + initial_bank);
+            player = PlayerTurn.Player;
 
-            addCard(null, R.drawable.spades_j);
-            addCard(null, R.drawable.clubs_2);
-            addCard(null, R.drawable.clubs_3);
-            addCard(null, R.drawable.hearts_k);
-            addCard(null, R.drawable.clubs_4);
-            addCard(null, R.drawable.spades_9);
-            addCard(null, R.drawable.clubs_5);
-            addCard(null, R.drawable.hearts_a);
-            addCard(null, R.drawable.clubs_6);
-            addCard(null, R.drawable.clubs_7);
+            bank = 500;
+            bankTextView.setText("$" + bank);
+
+            currentDeck = fullDeckList;
         } else {
+
+        }
+    }
+
+    private void getFullDeck() {
+        Field[] drawables = R.drawable.class.getFields();
+        fullDeckList = new ArrayList<>();
+        for (Field field : drawables) {
+            try {
+                if (field.getName().contains("clubs") ||
+                        field.getName().contains("spades") ||
+                        field.getName().contains("hearts") ||
+                        field.getName().contains("diamonds"))
+                    fullDeckList.add(ContextCompat.getDrawable(getApplicationContext(),
+                            field.getInt(null)));
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -75,10 +100,35 @@ public class GameActivity extends Activity implements View.OnClickListener {
         }
     }
 
-    private void addCard(PlayerType player, int drawableId) {
+    private void addCard(PlayerTurn _player, int drawableId) {
         ImageView card = new ImageView(getApplicationContext());
         card.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), drawableId));
         card.setAdjustViewBounds(true);
-        dealerCards.addView(card);
+
+        if (_player == PlayerTurn.Dealer) {
+            dealerCards.addView(card);
+            player = PlayerTurn.Player;
+        } else {
+            playerCards.addView(card);
+            player = PlayerTurn.Dealer;
+        }
+    }
+
+    private void addCard(PlayerTurn _player, Drawable drawable) {
+        ImageView card = new ImageView(getApplicationContext());
+        card.setImageDrawable(drawable);
+        card.setAdjustViewBounds(true);
+
+        if (_player == PlayerTurn.Dealer) {
+            dealerCards.addView(card);
+            currentDeck.remove(drawable);
+            dealerHand.add(drawable);
+            player = PlayerTurn.Player;
+        } else {
+            playerCards.addView(card);
+            currentDeck.remove(drawable);
+            playerHand.add(drawable);
+            player = PlayerTurn.Dealer;
+        }
     }
 }
