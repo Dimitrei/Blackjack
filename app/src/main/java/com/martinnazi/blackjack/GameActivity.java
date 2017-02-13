@@ -1,9 +1,11 @@
 package com.martinnazi.blackjack;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -12,6 +14,7 @@ import android.widget.TextView;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Main Activity for the game
@@ -20,7 +23,7 @@ public class GameActivity extends Activity implements View.OnClickListener {
 
     public enum PlayerTurn {Dealer, Player;}
 
-    public enum GameState {Bet, Play, Finish;}
+    public enum GameState {Bet, Play, Finish, Win, Loss;}
 
     private PlayerTurn player;
     private LinearLayout dealerCards;
@@ -28,7 +31,10 @@ public class GameActivity extends Activity implements View.OnClickListener {
     private TextView bankTextView;
     private TextView betView;
     private Button button25, button50, button100, button200;
+  
     private int bet;
+    private int playerScore;
+    private int dealerScore;
     private long bank;
 
     ArrayList<Drawable> fullDeckList;
@@ -65,6 +71,9 @@ public class GameActivity extends Activity implements View.OnClickListener {
             bankTextView.setText("$" + bank);
 
             currentDeck = fullDeckList;
+
+            playerScore = 0;
+            dealerScore = 0;
         } else {
 
         }
@@ -107,26 +116,65 @@ public class GameActivity extends Activity implements View.OnClickListener {
                 betView.setText("$" + bet);
                 break;
             case R.id.hit_button:
+                if (currentDeck.size() > 0) {
+                    int index = new Random().nextInt((currentDeck.size() - 1) + 1) + 1;
+                    addCard(player, currentDeck.get(index));
+                    player = PlayerTurn.Dealer;
+                    if (dealerScore < 17) {
+                        index = new Random().nextInt((currentDeck.size() - 1) + 1) + 1;
+                        addCard(player, currentDeck.get(index));
+                    } else {
+                        player = PlayerTurn.Player;
+                    }
+                }
                 break;
             case R.id.stand_button:
+                showResults();
                 break;
             default:
                 break;
         }
     }
 
-    private void addCard(PlayerTurn _player, int drawableId) {
-        ImageView card = new ImageView(getApplicationContext());
-        card.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), drawableId));
-        card.setAdjustViewBounds(true);
-
-        if (_player == PlayerTurn.Dealer) {
-            dealerCards.addView(card);
-            player = PlayerTurn.Player;
-        } else {
-            playerCards.addView(card);
-            player = PlayerTurn.Dealer;
+    private void showResults() {
+        AlertDialog ad = new AlertDialog.Builder(GameActivity.this).create();
+        ad.setTitle("Round Results");
+        ad.setButton(AlertDialog.BUTTON_POSITIVE, "Continue Game", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                betView.setText("$0");
+                dialog.dismiss();
+            }
+        });
+        ad.setButton(AlertDialog.BUTTON_NEGATIVE, "Finish Game", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                GameActivity.this.finish();
+            }
+        });
+        if (playerScore > 21) {
+            if (dealerScore > 21) {
+                ad.setMessage("Round ended in a draw.");
+            } else {
+                ad.setMessage("Round ended in a loss.");
+            }
+        } else if (playerScore == 21) {
+            if (playerScore > dealerScore) {
+                ad.setMessage("Round ended in a win.");
+            } else if (playerScore == dealerScore) {
+                ad.setMessage("Round ended in a draw.");
+            }
+        } else if (playerScore < 21) {
+            if (playerScore > dealerScore) {
+                ad.setMessage("Round ended in a win.");
+            } else if (playerScore < dealerScore) {
+                ad.setMessage("Round ended in a loss.");
+            } else {
+                ad.setMessage("Round ended in a draw.");
+            }
         }
+        ad.show();
     }
 
     private void addCard(PlayerTurn _player, Drawable drawable) {
@@ -138,12 +186,10 @@ public class GameActivity extends Activity implements View.OnClickListener {
             dealerCards.addView(card);
             currentDeck.remove(drawable);
             dealerHand.add(drawable);
-            player = PlayerTurn.Player;
         } else {
             playerCards.addView(card);
             currentDeck.remove(drawable);
             playerHand.add(drawable);
-            player = PlayerTurn.Dealer;
         }
     }
 }
