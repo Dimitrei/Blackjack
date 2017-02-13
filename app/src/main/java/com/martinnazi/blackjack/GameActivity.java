@@ -26,9 +26,9 @@ public class GameActivity extends Activity implements View.OnClickListener {
     private LinearLayout dealerCards;
     private LinearLayout playerCards;
     private TextView bankTextView;
-    private TextView betTextView;
+    private TextView betView;
     private Button button25, button50, button100, button200;
-
+    private int bet;
     private long bank;
 
     ArrayList<Drawable> fullDeckList;
@@ -48,9 +48,16 @@ public class GameActivity extends Activity implements View.OnClickListener {
             dealerCards = (LinearLayout) findViewById(R.id.dealerCards);
             playerCards = (LinearLayout) findViewById(R.id.playerCards);
             bankTextView = (TextView) findViewById(R.id.bankTextView);
-            betTextView = (TextView) findViewById(R.id.betTextView);
+            betView = (TextView) findViewById(R.id.betView);
             button25 = (Button) findViewById(R.id.button_25);
+            button50 = (Button) findViewById(R.id.button_50);
+            button100 = (Button) findViewById(R.id.button_100);
+            button200 = (Button) findViewById(R.id.button_200);
 
+            button25.setOnClickListener(this);
+            button50.setOnClickListener(this);
+            button100.setOnClickListener(this);
+            button200.setOnClickListener(this);
 
             player = PlayerTurn.Player;
 
@@ -84,12 +91,20 @@ public class GameActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_25:
+                bet = Integer.parseInt(betView.getText().toString().replace("$", "")) + 25;
+                betView.setText("$" + bet);
                 break;
             case R.id.button_50:
+                bet = Integer.parseInt(betView.getText().toString().replace("$", "")) + 50;
+                betView.setText("$" + bet);
                 break;
             case R.id.button_100:
+                bet = Integer.parseInt(betView.getText().toString().replace("$", "")) + 100;
+                betView.setText("$" + bet);
                 break;
             case R.id.button_200:
+                bet = Integer.parseInt(betView.getText().toString().replace("$", "")) + 200;
+                betView.setText("$" + bet);
                 break;
             case R.id.hit_button:
                 break;
